@@ -1,0 +1,16 @@
+{
+  "name": "code-deps-analyzer",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Eric Guo <ghkagg@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.2.45",
+    "fast-glob": "^3.3.1"
+  }
+}
