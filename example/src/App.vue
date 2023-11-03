@@ -11,7 +11,8 @@ import HelloWorld from './components/HelloWorld.vue'
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    HelloWorld,
+    DynamicComponent : () => import('./components/DynamicComponent.vue'),
   }
 }
 </script>

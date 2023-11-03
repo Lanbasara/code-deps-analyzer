@@ -1,14 +1,17 @@
 const fg = require('fast-glob');
-const path = require('path')
-const fs = require('fs')
+const path = require('path');
+const fs = require('fs');
 const { parseVueFile } = require('./parsers/vueParse');
-const publicPath = '../example'
+const publicPath = '../example';
 
+// glob遍历的文件目录列表
 const sources = [
-  path.join(__dirname,publicPath,'src/**/*.vue'),
-  path.join(__dirname,publicPath,'src/**/*.js'),
-  path.join(__dirname,publicPath,'src/**/*.ts'),
-]
+  path.join(__dirname, publicPath, 'src/**/*.vue'),
+  path.join(__dirname, publicPath, 'src/**/*.js'),
+  path.join(__dirname, publicPath, 'src/**/*.ts'),
+];
+
+const dependencies = new Map();
 
 async function processFiles() {
   try {
@@ -21,9 +24,7 @@ async function processFiles() {
 
       // 解析Vue文件并输出import的结果
       if (file.endsWith('.vue')) {
-        const importedModules = parseVueFile(fileContent);
-        console.log(`Vue file: ${file}`);
-        console.log(importedModules);
+        parseVueFile(filePath, fileContent, dependencies);
       } else if (file.endsWith('.js')) {
         // 处理JavaScript文件
         console.log(`JavaScript file: ${file}`);
@@ -34,6 +35,7 @@ async function processFiles() {
         // 其他逻辑...
       }
     }
+    console.log(allImports); // 打印所有文件的import信息
   } catch (err) {
     console.error(err);
   }
