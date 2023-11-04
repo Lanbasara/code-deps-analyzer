@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "description": "Web server for code deps analyzer",
+  "author": "Lanbasara <ghkagg@outlook.com>",
+  "homepage": "https://github.com/Lanbasara/code-deps-analyzer#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lanbasara/code-deps-analyzer.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/server.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Lanbasara/code-deps-analyzer/issues"
+  }
+}

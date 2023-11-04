@@ -1,6 +1,6 @@
 const path = require('path');
 
-const publicPath = '../example';
+const publicPath = '../../example';
 
 /**
  * Returns the absolute path of a file based on the origin and path.
