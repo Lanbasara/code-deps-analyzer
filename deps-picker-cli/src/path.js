@@ -2,6 +2,8 @@ const path = require('path');
 
 const publicPath = '../../example';
 
+const resultPath = path.resolve(__dirname, '../../dist/dependencies.json');
+
 /**
  * Returns the absolute path of a file based on the origin and path.
  *
@@ -24,4 +26,5 @@ function getAbsPath(originPath, sourcePath) {
 module.exports = {
   getAbsPath,
   publicPath,
+  resultPath,
 };
