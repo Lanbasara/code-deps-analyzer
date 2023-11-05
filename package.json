@@ -19,7 +19,8 @@
     "@babel/traverse": "^7.23.2",
     "@vue/compiler-sfc": "^3.2.45",
     "fast-glob": "^3.3.1",
-    "fastify": "^4.24.3"
+    "fastify": "^4.24.3",
+    "react-graph-vis": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20.8.10",
