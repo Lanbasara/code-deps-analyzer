@@ -1,9 +1,9 @@
 {
-  "/Users/ludwig/Code/code-deps-analyzer/example/src/App.vue": {
+  "/Users/haokun/Code/code-deps-analyzer/example/src/App.vue": {
     "type": "vue",
     "importedModules": [
       {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/example/src/components/HelloWorld.vue",
+        "source": "/Users/haokun/Code/code-deps-analyzer/example/src/components/HelloWorld.vue",
         "specifier": [
           {
             "type": "default",
@@ -12,18 +12,18 @@
         ]
       },
       {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/example/src/components/DynamicComponent.vue",
+        "source": "/Users/haokun/Code/code-deps-analyzer/example/src/components/DynamicComponent.vue",
         "specifier": [
           "DynamicComponent"
         ]
       }
     ]
   },
-  "/Users/ludwig/Code/code-deps-analyzer/example/src/main.js": {
+  "/Users/haokun/Code/code-deps-analyzer/example/src/main.js": {
     "type": "js",
     "importedModules": [
       {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/node_modules/vue",
+        "source": "/Users/haokun/Code/code-deps-analyzer/node_modules/vue",
         "specifier": [
           {
             "type": "default",
@@ -32,7 +32,7 @@
         ]
       },
       {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/example/src/App.vue",
+        "source": "/Users/haokun/Code/code-deps-analyzer/example/src/App.vue",
         "specifier": [
           {
             "type": "default",
@@ -42,11 +42,67 @@
       }
     ]
   },
-  "/Users/ludwig/Code/code-deps-analyzer/example/src/helpers/tools.ts": {
+  "/Users/haokun/Code/code-deps-analyzer/example/src/components/A.vue": {
+    "type": "vue",
+    "importedModules": [
+      {
+        "source": "/Users/haokun/Code/code-deps-analyzer/example/src/components/B.vue",
+        "specifier": [
+          {
+            "type": "default",
+            "localName": "B"
+          }
+        ]
+      },
+      {
+        "source": "/Users/haokun/Code/code-deps-analyzer/example/src/components/subComponents/C.vue",
+        "specifier": [
+          {
+            "type": "default",
+            "localName": "C"
+          }
+        ]
+      },
+      {
+        "source": "/Users/haokun/Code/code-deps-analyzer/node_modules/ant-design-vue/lib",
+        "specifier": [
+          {
+            "type": "named",
+            "importedName": "Button",
+            "localName": "Button"
+          },
+          {
+            "type": "named",
+            "importedName": "Message",
+            "localName": "MyMessage"
+          }
+        ]
+      }
+    ]
+  },
+  "/Users/haokun/Code/code-deps-analyzer/example/src/components/B.vue": {
+    "type": "vue",
+    "importedModules": [
+      {
+        "source": "/Users/haokun/Code/code-deps-analyzer/example/src/components/subComponents/C.vue",
+        "specifier": [
+          {
+            "type": "default",
+            "localName": "C"
+          }
+        ]
+      }
+    ]
+  },
+  "/Users/haokun/Code/code-deps-analyzer/example/src/components/HelloWorld.vue": {
+    "type": "vue",
+    "importedModules": []
+  },
+  "/Users/haokun/Code/code-deps-analyzer/example/src/helpers/tools.ts": {
     "type": "ts",
     "importedModules": [
       {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/node_modules/axios/dist/node",
+        "source": "/Users/haokun/Code/code-deps-analyzer/node_modules/axios/dist/node",
         "specifier": [
           {
             "type": "named",
@@ -62,11 +118,11 @@
       }
     ]
   },
-  "/Users/ludwig/Code/code-deps-analyzer/example/src/helpers/utils.js": {
+  "/Users/haokun/Code/code-deps-analyzer/example/src/helpers/utils.js": {
     "type": "js",
     "importedModules": [
       {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/node_modules/lodash",
+        "source": "/Users/haokun/Code/code-deps-analyzer/node_modules/lodash",
         "specifier": [
           {
             "type": "namespace",
@@ -76,72 +132,11 @@
       }
     ]
   },
-  "/Users/ludwig/Code/code-deps-analyzer/example/src/components/A.vue": {
+  "/Users/haokun/Code/code-deps-analyzer/example/src/components/subComponents/C.vue": {
     "type": "vue",
     "importedModules": [
       {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/example/src/components/B.vue",
-        "specifier": [
-          {
-            "type": "default",
-            "localName": "B"
-          }
-        ]
-      },
-      {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/example/src/components/subComponents/C.vue",
-        "specifier": [
-          {
-            "type": "default",
-            "localName": "C"
-          }
-        ]
-      },
-      {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/node_modules/ant-design-vue/lib",
-        "specifier": [
-          {
-            "type": "named",
-            "importedName": "Button",
-            "localName": "Button"
-          }
-        ]
-      },
-      {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/node_modules/ant-design-vue/lib",
-        "specifier": [
-          {
-            "type": "named",
-            "importedName": "Message",
-            "localName": "MyMessage"
-          }
-        ]
-      }
-    ]
-  },
-  "/Users/ludwig/Code/code-deps-analyzer/example/src/components/B.vue": {
-    "type": "vue",
-    "importedModules": [
-      {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/example/src/components/subComponents/C.vue",
-        "specifier": [
-          {
-            "type": "default",
-            "localName": "C"
-          }
-        ]
-      }
-    ]
-  },
-  "/Users/ludwig/Code/code-deps-analyzer/example/src/components/HelloWorld.vue": {
-    "type": "vue",
-    "importedModules": []
-  },
-  "/Users/ludwig/Code/code-deps-analyzer/example/src/components/subComponents/C.vue": {
-    "type": "vue",
-    "importedModules": [
-      {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/example/src/components/A.vue",
+        "source": "/Users/haokun/Code/code-deps-analyzer/example/src/components/A.vue",
         "specifier": [
           {
             "type": "default",
@@ -150,7 +145,7 @@
         ]
       },
       {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/example/src/helpers/utils",
+        "source": "/Users/haokun/Code/code-deps-analyzer/example/src/helpers/utils",
         "specifier": [
           {
             "type": "named",
@@ -161,11 +156,11 @@
       }
     ]
   },
-  "/Users/ludwig/Code/code-deps-analyzer/example/src/components/tsComponents/D.tsx": {
+  "/Users/haokun/Code/code-deps-analyzer/example/src/components/tsComponents/D.tsx": {
     "type": "ts",
     "importedModules": [
       {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/node_modules/vue",
+        "source": "/Users/haokun/Code/code-deps-analyzer/node_modules/vue",
         "specifier": [
           {
             "type": "named",
@@ -175,7 +170,7 @@
         ]
       },
       {
-        "source": "/Users/ludwig/Code/code-deps-analyzer/example/src/helpers/tools",
+        "source": "/Users/haokun/Code/code-deps-analyzer/example/src/helpers/tools",
         "specifier": [
           {
             "type": "named",

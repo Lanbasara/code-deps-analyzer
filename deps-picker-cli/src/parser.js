@@ -20,6 +20,7 @@ function parseFilePathCode(code, filePath) {
     plugins: ['jsx', 'typescript'],
   });
   const imports = [];
+  const sourcesKey = new Set()
 
   traverse(ast, {
     ImportDeclaration(path) {
@@ -46,10 +47,21 @@ function parseFilePathCode(code, filePath) {
         }
       });
 
-      imports.push({
-        source: getAbsPath(filePath, path.node.source.value),
-        specifier: importSpecifier,
-      });
+
+
+      const source = getAbsPath(filePath, path.node.source.value);
+      if(!sourcesKey.has(source)){
+        imports.push({
+          source,
+          specifier: importSpecifier,
+        });
+      } else {
+        const importIndex = imports.findIndex((importItem) => importItem.source === source);
+        imports[importIndex].specifier = imports[importIndex].specifier.concat(importSpecifier);
+      }
+      sourcesKey.add(source)
+
+      
     },
     CallExpression(path) {
       if (path.node.callee.type === 'Import') {
