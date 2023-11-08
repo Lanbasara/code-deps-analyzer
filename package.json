@@ -1,35 +1,16 @@
 {
   "name": "code-deps-analyzer",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "workspaces": [
-    "cli-tools",
-    "server",
-    "client"
-  ],
-  "keywords": [],
-  "author": "Eric Guo <ghkagg@outlook.com>",
-  "license": "MIT",
-  "dependencies": {
-    "@babel/parser": "^7.23.0",
-    "@babel/traverse": "^7.23.2",
-    "@vue/compiler-sfc": "^3.2.45",
-    "fast-glob": "^3.3.1",
-    "fastify": "^4.24.3",
-    "react-d3-graph": "^2.6.0"
   },
   "devDependencies": {
     "@types/node": "^20.8.10",
-    "ant-design-vue": "^4.0.6",
-    "axios": "^1.6.0",
-    "lerna": "^7.4.2",
     "lodash": "^4.17.21",
     "nodemon": "^3.0.1",
-    "prettier": "^3.0.3",
-    "vue": "^3.3.7"
-  }
+    "prettier": "^3.0.3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

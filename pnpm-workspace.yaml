@@ -1,0 +1,5 @@
+packages:
+ - 'client'
+ - 'deps-picker-cli'
+ - 'server'
+ - 'example'

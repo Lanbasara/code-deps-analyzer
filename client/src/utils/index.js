@@ -182,6 +182,12 @@ const graphInfo = {
     ]
   }
 }
+/**
+ * Converts the given data to a graph format.
+ *
+ * @param {Object} data - The data to be converted.
+ * @return {Object} An object representing the graph format of the data.
+ */
 function convertDataToGraphFormat(data) {
   const nodes = [];
   const links = [];
@@ -194,7 +200,8 @@ function convertDataToGraphFormat(data) {
     // Create a node for the file
     const fileNode = {
       id: filePath,
-      name: /.*\/(\w+\.\w+)$/.exec(filePath)[1],
+      name: setFileName(filePath),
+      color : setColor(file?.type)
     };
     if (!nodeIds.has(filePath)) {
       nodes.push(fileNode);
@@ -210,7 +217,7 @@ function convertDataToGraphFormat(data) {
         // Create a new node for the imported module
         const newNode = {
           id: source,
-          name: /.*\/(\w+\.\w+)$/.exec(filePath)[1],
+          name: setFileName(source)
         };
         nodes.push(newNode);
         nodeIds.add(source);
@@ -232,6 +239,27 @@ function convertDataToGraphFormat(data) {
   }
 
   return { nodes, links };
+}
+
+
+
+/**
+ * Pickup graph node display name from a given file path.
+ *
+ * @param {string} filePath - The path of the file.
+ * @return {string} The file name.
+ */
+function setFileName(filePath) {
+  return /.*\/(\w+(\.\w+)?)$/.exec(filePath)[1] || filePath
+}
+
+function setColor(type){
+  const colorMap = {
+    vue: 'green',
+    js: 'yellow',
+    ts: 'blue'
+  }
+  return colorMap[type]
 }
 
 const data = convertDataToGraphFormat(graphInfo);
