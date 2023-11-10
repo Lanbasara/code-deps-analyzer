@@ -20,9 +20,13 @@ function parseFilePathCode(code, filePath) {
     plugins: ['jsx', 'typescript'],
   });
   const imports = [];
-  const sourcesKey = new Set()
+  const sourcesKey = new Set();
+  let codeColums = 1;
 
   traverse(ast, {
+    Program(path) {
+      codeColums = path.node.loc.end.line;
+    },
     ImportDeclaration(path) {
       const importSpecifier = path.node.specifiers.map((specifier) => {
         switch (specifier.type) {
@@ -47,21 +51,20 @@ function parseFilePathCode(code, filePath) {
         }
       });
 
-
-
       const source = getAbsPath(filePath, path.node.source.value);
-      if(!sourcesKey.has(source)){
+      if (!sourcesKey.has(source)) {
         imports.push({
           source,
           specifier: importSpecifier,
         });
       } else {
-        const importIndex = imports.findIndex((importItem) => importItem.source === source);
-        imports[importIndex].specifier = imports[importIndex].specifier.concat(importSpecifier);
+        const importIndex = imports.findIndex(
+          (importItem) => importItem.source === source
+        );
+        imports[importIndex].specifier =
+          imports[importIndex].specifier.concat(importSpecifier);
       }
-      sourcesKey.add(source)
-
-      
+      sourcesKey.add(source);
     },
     CallExpression(path) {
       if (path.node.callee.type === 'Import') {
@@ -79,7 +82,10 @@ function parseFilePathCode(code, filePath) {
     },
   });
 
-  return imports;
+  return {
+    codeColums,
+    imports,
+  };
 }
 
 /**
@@ -92,13 +98,14 @@ function parseFilePathCode(code, filePath) {
 function vueParser(filePath, dependencies) {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { descriptor } = parse(fileContent);
-  const importedModules = parseFilePathCode(
+  const { imports: importedModules, codeColums } = parseFilePathCode(
     descriptor.script?.content,
     filePath
   );
   dependencies.set(filePath, {
     type: 'vue',
     importedModules,
+    codeColums,
   });
 }
 
@@ -112,10 +119,14 @@ function vueParser(filePath, dependencies) {
 function jsorTsParser(filePath, dependencies, fileExt) {
   const isTs = /\.tsx?/.test(fileExt);
   const fileContent = fs.readFileSync(filePath, 'utf-8');
-  const importedModules = parseFilePathCode(fileContent, filePath);
+  const { imports: importedModules, codeColums } = parseFilePathCode(
+    fileContent,
+    filePath
+  );
   dependencies.set(filePath, {
     type: isTs ? 'ts' : 'js',
     importedModules,
+    codeColums,
   });
 }
 

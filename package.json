@@ -2,8 +2,7 @@
   "name": "code-deps-analyzer",
   "version": "1.0.0",
   "description": "",
-  "scripts": {
-  },
+  "scripts": {},
   "devDependencies": {
     "@types/node": "^20.8.10",
     "lodash": "^4.17.21",
@@ -12,5 +11,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-syntax-class-properties": "^7.12.13"
+  }
 }

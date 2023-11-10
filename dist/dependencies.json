@@ -17,7 +17,8 @@
           "DynamicComponent"
         ]
       }
-    ]
+    ],
+    "codeColums": 11
   },
   "/Users/haokun/Code/code-deps-analyzer/example/src/main.js": {
     "type": "js",
@@ -40,7 +41,8 @@
           }
         ]
       }
-    ]
+    ],
+    "codeColums": 9
   },
   "/Users/haokun/Code/code-deps-analyzer/example/src/components/A.vue": {
     "type": "vue",
@@ -78,7 +80,8 @@
           }
         ]
       }
-    ]
+    ],
+    "codeColums": 15
   },
   "/Users/haokun/Code/code-deps-analyzer/example/src/components/B.vue": {
     "type": "vue",
@@ -92,11 +95,13 @@
           }
         ]
       }
-    ]
+    ],
+    "codeColums": 12
   },
   "/Users/haokun/Code/code-deps-analyzer/example/src/components/HelloWorld.vue": {
     "type": "vue",
-    "importedModules": []
+    "importedModules": [],
+    "codeColums": 8
   },
   "/Users/haokun/Code/code-deps-analyzer/example/src/helpers/tools.ts": {
     "type": "ts",
@@ -116,7 +121,8 @@
           }
         ]
       }
-    ]
+    ],
+    "codeColums": 5
   },
   "/Users/haokun/Code/code-deps-analyzer/example/src/helpers/utils.js": {
     "type": "js",
@@ -130,7 +136,8 @@
           }
         ]
       }
-    ]
+    ],
+    "codeColums": 11
   },
   "/Users/haokun/Code/code-deps-analyzer/example/src/components/subComponents/C.vue": {
     "type": "vue",
@@ -154,7 +161,8 @@
           }
         ]
       }
-    ]
+    ],
+    "codeColums": 13
   },
   "/Users/haokun/Code/code-deps-analyzer/example/src/components/tsComponents/D.tsx": {
     "type": "ts",
@@ -179,6 +187,7 @@
           }
         ]
       }
-    ]
+    ],
+    "codeColums": 15
   }
 }

@@ -9,6 +9,9 @@
   "directories": {
     "lib": "lib"
   },
+  "bin" : {
+    "analyze": "lib/index.js"
+  },
   "dependencies": {
     "@babel/parser": "^7.23.0",
     "@babel/traverse": "^7.23.2",

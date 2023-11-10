@@ -7,23 +7,12 @@
   "license": "ISC",
   "main": "lib/index.js",
   "dependencies": {
-    "fastify": "^4.24.3"
-  },
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Lanbasara/code-deps-analyzer.git"
+    "@fastify/cors": "^8.4.1",
+    "deps-picker-cli": "workspace:../deps-picker-cli",
+    "fastify": "^4.24.3",
+    "shelljs": "^0.8.5"
   },
   "scripts": {
-    "server" : "nodemon src/index.js"
-  },
-  "bugs": {
-    "url": "https://github.com/Lanbasara/code-deps-analyzer/issues"
+    "server": "nodemon src/index.js"
   }
 }

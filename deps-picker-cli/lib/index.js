@@ -1,9 +1,9 @@
-// Imports
+#!/usr/bin/env node
 const fg = require('fast-glob');
 const path = require('path');
 const { Parser, getSupportedFileExt } = require('./parser');
 const { publicPath, resultPath } = require('./path');
-const { saveDependenciesToFile } = require('./result');
+const { saveDependenciesToFile, calculateSize } = require('./result');
 //-------------------------------
 
 const SUPPORTED_FILE_EXTS = getSupportedFileExt();
@@ -24,6 +24,7 @@ async function processFiles() {
       Parser.get(fileExt)(file, dependencies, fileExt);
     }
     console.log(dependencies); // 打印所有文件的import信息
+    calculateSize(dependencies);
     process.on('exit', () => {
       saveDependenciesToFile(dependencies, resultPath);
     });

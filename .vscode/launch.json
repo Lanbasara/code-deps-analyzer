@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "调试cli-index",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/deps-picker-cli/src/index.js"
+      "program": "${workspaceFolder}/deps-picker-cli/lib/index.js"
     },
     {
       "type": "node",
