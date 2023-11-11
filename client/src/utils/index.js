@@ -15,7 +15,8 @@ function convertDataToGraphFormat(data) {
 
     // Create a node for the file
     const fileNode = {
-      symbolSize: 60,
+      category: file?.type,
+      symbolSize: file?.codeColums,
       id: filePath,
       name: setFileName(filePath),
       color: setColor(file?.type),
@@ -33,7 +34,8 @@ function convertDataToGraphFormat(data) {
       if (!nodeIds.has(source)) {
         // Create a new node for the imported module
         const newNode = {
-          symbolSize: 60,
+          category: file?.type,
+          symbolSize: file?.codeColums,
           id: source,
           name: setFileName(source),
         };
@@ -56,7 +58,11 @@ function convertDataToGraphFormat(data) {
     }
   }
 
-  return { nodes, links };
+  remapNumbers(nodes, 60, 2);
+
+  const categories = generateCategory(nodes);
+
+  return { nodes, links, categories };
 }
 
 /**
@@ -76,6 +82,36 @@ function setColor(type) {
     ts: 'blue',
   };
   return colorMap[type];
+}
+
+function remapNumbers(nodes, newMean, ratio, decimalPlaces = 2) {
+  let oldMean =
+    nodes.reduce((acc, val) => acc + val?.symbolSize || 10, 0) / nodes.length;
+
+  console.log('oldMean is', oldMean);
+  nodes.forEach((node) => {
+    node.symbolSize = ((node.symbolSize - oldMean) * ratio + newMean).toFixed(
+      decimalPlaces
+    );
+  });
+}
+
+function generateCategory(nodes) {
+  const category = ['vue', 'js', 'ts'].map((type) => {
+    return {
+      name: type,
+    };
+  });
+
+  nodes.forEach((node) => {
+    node.category = category
+      .map((item) => item.name)
+      .findIndex((item) => {
+        return node.category === item;
+      });
+  });
+
+  return category;
 }
 
 export { convertDataToGraphFormat };

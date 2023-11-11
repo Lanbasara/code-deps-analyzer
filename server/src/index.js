@@ -5,7 +5,7 @@ const { exec } = require('shelljs');
 const cors = require('@fastify/cors');
 
 fastify.register(cors, {
-  origin: ['http://localhost:5173'],
+  origin: ['*'],
   // put your options here
 });
 

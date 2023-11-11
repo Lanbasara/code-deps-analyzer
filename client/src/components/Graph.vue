@@ -41,6 +41,14 @@ export default {
           //   ],
           //   animationDuration: 1500,
           //   animationEasingUpdate: 'quinticInOut',
+          legend: [
+            {
+              // selectedMode: 'single',
+              data: graphData.categories.map(function (a) {
+                return a.name;
+              }),
+            },
+          ],
           series: [
             {
               draggable: true,
@@ -48,6 +56,7 @@ export default {
               layout: 'force',
               nodes: graphData.nodes,
               links: graphData.links,
+              categories: graphData.categories,
               autoCurveness: 0.01, //多条边的时候，自动计算曲率
               edgeSymbol: ['circle', 'arrow'], //边两边的类型
               force: {
@@ -56,6 +65,12 @@ export default {
                 edgeLength: 200,
                 friction: 0.6,
                 roam: true,
+              },
+              emphasis: {
+                focus: 'adjacency',
+                lineStyle: {
+                  width: 10,
+                },
               },
               label: {
                 show: true,
