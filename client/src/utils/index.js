@@ -19,7 +19,9 @@ function convertDataToGraphFormat(data) {
       symbolSize: file?.codeColums,
       id: filePath,
       name: setFileName(filePath),
-      color: setColor(file?.type),
+      itemStyle: {
+        color: setColor(file?.type),
+      },
     };
     if (!nodeIds.has(filePath)) {
       nodes.push(fileNode);
@@ -38,6 +40,9 @@ function convertDataToGraphFormat(data) {
           symbolSize: file?.codeColums,
           id: source,
           name: setFileName(source),
+          itemStyle: {
+            color: setColor(file?.type),
+          },
         };
         nodes.push(newNode);
         nodeIds.add(source);
@@ -88,7 +93,6 @@ function remapNumbers(nodes, newMean, ratio, decimalPlaces = 2) {
   let oldMean =
     nodes.reduce((acc, val) => acc + val?.symbolSize || 10, 0) / nodes.length;
 
-  console.log('oldMean is', oldMean);
   nodes.forEach((node) => {
     node.symbolSize = ((node.symbolSize - oldMean) * ratio + newMean).toFixed(
       decimalPlaces
@@ -114,4 +118,4 @@ function generateCategory(nodes) {
   return category;
 }
 
-export { convertDataToGraphFormat };
+export { convertDataToGraphFormat, setColor };

@@ -1,7 +1,7 @@
 <script>
 import * as echarts from 'echarts';
 import 'vue-echarts';
-import { convertDataToGraphFormat } from '../utils/index';
+import { convertDataToGraphFormat, setColor } from '../utils/index';
 
 export default {
   data() {
@@ -15,14 +15,7 @@ export default {
     fetch('http://localhost:3000/dependencies')
       .then((res) => res.json())
       .then((graph) => {
-        console.log('graph is', graph);
         const graphData = convertDataToGraphFormat(graph);
-        console.log('graphData is', graphData);
-        // graphData.nodes.forEach(function (node) {
-        //   node.label = {
-        //     show: node.symbolSize > 30,
-        //   };
-        // });
         this.option = {
           title: {
             text: 'Les Miserables',
@@ -30,25 +23,72 @@ export default {
             top: 'bottom',
             left: 'right',
           },
-          //   tooltip: {},
-          //   legend: [
-          //     {
-          //       // selectedMode: 'single',
-          //       data: graph.categories.map(function (a) {
-          //         return a.name;
-          //       }),
-          //     },
-          //   ],
-          //   animationDuration: 1500,
-          //   animationEasingUpdate: 'quinticInOut',
-          legend: [
-            {
-              // selectedMode: 'single',
-              data: graphData.categories.map(function (a) {
-                return a.name;
-              }),
+          animationDuration: 1500,
+          animationEasingUpdate: 'quinticInOut',
+          tooltip: {
+            z: 60,
+            show: true,
+            showContent: true,
+            formatter: (data) => {
+              console.log('data is', data);
+              switch (data.dataType) {
+                case 'node': {
+                  return `${data.data.name}`;
+                }
+                case 'edge': {
+                  return 'edge';
+                }
+                default: {
+                  return 'aaa';
+                }
+              }
             },
-          ],
+            trigger: 'item',
+            triggerOn: 'mousemove|click',
+            alwaysShowContent: false,
+            displayMode: 'single',
+            renderMode: 'auto',
+            confine: null,
+            showDelay: 0,
+            hideDelay: 100,
+            transitionDuration: 0.4,
+            enterable: false,
+            backgroundColor: '#fff',
+            shadowBlur: 10,
+            shadowColor: 'rgba(0, 0, 0, 0.2)',
+            shadowOffsetX: 1,
+            shadowOffsetY: 2,
+            borderRadius: 4,
+            borderWidth: 1,
+            padding: null,
+            extraCssText: '',
+            textStyle: {
+              color: '#666',
+              fontSize: 14,
+            },
+            axisPointer: {
+              type: 'line',
+              axis: 'auto',
+              animation: 'auto',
+              animationDurationUpdate: 200,
+              animationEasingUpdate: 'exponentialOut',
+              crossStyle: {
+                color: '#999',
+                width: 1,
+                type: 'dashed',
+              },
+            },
+          },
+          legend: {
+            data: graphData.categories.map(function (a) {
+              return {
+                name: a.name,
+                itemStyle: {
+                  color: setColor(a.name),
+                },
+              };
+            }),
+          },
           series: [
             {
               draggable: true,
@@ -60,8 +100,8 @@ export default {
               autoCurveness: 0.01, //多条边的时候，自动计算曲率
               edgeSymbol: ['circle', 'arrow'], //边两边的类型
               force: {
-                repulsion: 20,
-                gravity: 0.01,
+                repulsion: 50,
+                gravity: 0.005,
                 edgeLength: 200,
                 friction: 0.6,
                 roam: true,
@@ -72,6 +112,9 @@ export default {
                   width: 10,
                 },
               },
+              lineStyle: {
+                curveness: 0.3,
+              },
               label: {
                 show: true,
                 position: 'bottom',
@@ -79,35 +122,11 @@ export default {
                 fontSize: 18,
                 align: 'center',
               },
-              itemStyle: {
-                color: {
-                  type: 'radial',
-                  x: 0.5,
-                  y: 0.5,
-                  r: 0.5,
-                  colorStops: [
-                    {
-                      offset: 0,
-                      color: '#3dd67a', // 0% 处的颜色
-                    },
-                    {
-                      offset: 0.7,
-                      color: '#3dd67a', // 0% 处的颜色
-                    },
-                    {
-                      offset: 1,
-                      color: '#95dcb2', // 100% 处的颜色
-                    },
-                  ],
-                  global: false, // 缺省为 false
-                },
-              },
             },
           ],
         };
         myChart.setOption(this.option);
       });
-    // myChart.setOption(this.option);
   },
 };
 </script>
