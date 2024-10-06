@@ -1,0 +1,46 @@
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    height: 200px;
+    border: 2px solid #000;
+    display: flex;
+    /*弹性布局*/
+    justify-content: space-between;
+    /*两端对齐*/
+  }
+
+  .container .left {
+    width: 300px;
+    background-color: tomato;
+  }
+
+  .container .right {
+    display: flex;
+    /*弹性布局，这样子元素没有添加高度时，会和父元素一样高*/
+  }
+
+  .container .right .item1 {
+    width: 200px;
+    background-color: pink;
+  }
+
+  .container .right .item2 {
+    width: 100px;
+    background-color: skyblue;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="left"></div>
+    <div class="right">
+      <div class="item1"></div>
+      <div class="item2"></div>
+    </div>
+  </div>
+</body>
